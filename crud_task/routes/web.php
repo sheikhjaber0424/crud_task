@@ -27,7 +27,11 @@ Route::get('/create',[ProductController::class,'create']);
 
 Route::post('/products',[ProductController::class,'store']);
 
+Route::get('/edit/{id}',[ProductController::class,'edit']);
 
+Route::put('/update/{id}',[ProductController::class,'update']);
+
+Route::get('/delete/{id}',[ProductController::class,'destroy']); 
 Auth::routes();
 
 
@@ -36,7 +40,7 @@ Auth::routes();
 // Route::get('/logout',[UserController::class,'logout']);
 
 
-// Route::get('/delete/{id}',[ProductController::class,'destroy']);
+
 
 
 

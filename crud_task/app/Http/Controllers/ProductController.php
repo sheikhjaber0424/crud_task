@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -58,7 +59,7 @@ class ProductController extends Controller
             $product->gallery = $filename;
         } 
         $product->save();
-        return redirect()->back()->with('status','Product Image Added Successfully');
+        return redirect()->back()->with('status','Product Added Successfully');
     }
 
     /**
@@ -78,9 +79,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('edit',['product'=>$product]);
     }
 
     /**
@@ -90,9 +92,27 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        
+        if($request->hasfile('gallery'))
+        {
+            $destination = 'uploads/products/'.$product->gallery;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('gallery');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/products/', $filename);
+            $product->gallery = $filename;
+        } 
+        $product->update();
+        return redirect()->back()->with('status','Product updated Successfully');
     }
 
     /**
@@ -101,9 +121,16 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    // public function destroy(Product $product)
-    // {
-    //    $product->delete();
-    //     return redirect('/products');
-    // }
+    public function destroy($id)
+    {
+       $product = Product::find($id);
+       $destination = 'uploads/products/'.$product->gallery;
+       if(File::exists($destination))
+       {
+            File::delete($destination);
+       }
+       $product->delete();
+
+       return redirect()->back()->with('status','Product deleted Successfully');
+    }
 }
