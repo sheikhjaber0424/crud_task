@@ -13,16 +13,16 @@
         @csrf
         <div class="form-group mb-3">
             <label for="">Name</label>
-            <input type="text" name="name" class="form-control">
+            <input type="text" name="name" class="form-control" required>
         </div>
         <div class="form-group mb-3">
             <label for="">Price</label>
-            <input type="text" name="price" class="form-control">
+            <input type="text" name="price" class="form-control" required>
         </div>
         
         <div class="form-group mb-3">
             <label for="">Image</label>
-            <input type="file" name="gallery" class="form-control">
+            <input type="file" name="gallery" class="form-control" required>
         </div>
         <div class="form-group mb-3">
             <button type="submit" class="btn btn-primary">Save </button>

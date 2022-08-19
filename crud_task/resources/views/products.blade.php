@@ -9,7 +9,8 @@
 
     @if(Auth::check())
     <div class="text-center">
-        <a href="/create"><button class="btn btn-secondary ">Add Product</button></a>
+        <a href="/products/create"><button class="btn btn-secondary ">Add Product</button></a>
+        {{-- <a href="products/create"><button class="btn btn-secondary ">Add Product</button></a> --}}
        
     </div>
     @endif
@@ -33,8 +34,14 @@
    
         <div> 
             @if(Auth::check())
-            <a href="/edit/{{ $item['id'] }}"><button class="btn btn-primary mt-4">Edit</button></a>
-            <a href="/delete/{{ $item['id'] }}"><button class="btn btn-danger mt-4">Delete</button></a>
+            <a href="products/{{ $item['id'] }}/edit  "><button class="btn btn-primary mt-4">Edit</button></a>
+            
+            <form class="d-inline" action="/products/{{ $item['id'] }}" method="POST">
+                @csrf
+                @method('DELETE')
+
+                <a href="/delete/{{ $item['id'] }}"><button class="btn btn-danger mt-4">Delete</button></a>
+            </form>
             @endif
         </div>
         </div>

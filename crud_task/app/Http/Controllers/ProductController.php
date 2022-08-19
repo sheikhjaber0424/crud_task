@@ -84,7 +84,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         return view('edit',['product'=>$product]);
     }
-
+ 
     /**
      * Update the specified resource in storage.
      *

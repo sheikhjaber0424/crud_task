@@ -19,19 +19,19 @@ use Illuminate\Support\Facades\Route;
 //     return view('products');
 // });
 
-// Route::resource('product',ProductController::class);
+Route::resource('products',ProductController::class);
 
 Route::get('/',[ProductController::class,'index']);
 
-Route::get('/create',[ProductController::class,'create']);
+// Route::get('/create',[ProductController::class,'create']);
 
-Route::post('/products',[ProductController::class,'store']);
+// Route::post('/products',[ProductController::class,'store']);
 
-Route::get('/edit/{id}',[ProductController::class,'edit']);
+// Route::get('/edit/{id}',[ProductController::class,'edit']);
 
-Route::put('/update/{id}',[ProductController::class,'update']);
+// Route::put('/update/{id}',[ProductController::class,'update']);
 
-Route::get('/delete/{id}',[ProductController::class,'destroy']); 
+// Route::get('/delete/{id}',[ProductController::class,'destroy']);
 Auth::routes();
 
 

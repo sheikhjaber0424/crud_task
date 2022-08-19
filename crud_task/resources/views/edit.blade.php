@@ -9,7 +9,7 @@
           @if (session('status'))
           <h6 class="alert alert-success">{{ session('status') }}</h6>
       @endif
-  <form action='/update/{{ $product['id'] }}' method="POST" enctype="multipart/form-data">
+  <form action='/products/{{ $product['id'] }}' method="POST" enctype="multipart/form-data">
       @csrf
       @method('PUT')
       <div class="form-group mb-3">
