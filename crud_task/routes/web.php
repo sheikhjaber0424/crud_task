@@ -15,18 +15,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('/products');
-});
+// Route::get('/', function () {
+//     return view('products');
+// });
+
+// Route::resource('product',ProductController::class);
+
+Route::get('/',[ProductController::class,'index']);
+
+Route::get('/create',[ProductController::class,'create']);
+
+Route::post('/products',[ProductController::class,'store']);
+
 
 Auth::routes();
+
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('/logout',[UserController::class,'logout']);
 
-Route::get('/products',[ProductController::class,'index']);
-Route::get('/delete/{id}',[ProductController::class,'destroy']);
+
+// Route::get('/delete/{id}',[ProductController::class,'destroy']);
 
 
 
@@ -35,7 +45,7 @@ Route::get('/delete/{id}',[ProductController::class,'destroy']);
 // });
 // Route::get('/products',[ProductController::class, 'index']);
 
-// Auth::routes();
+
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/logout',[UserController::class,'logout']);

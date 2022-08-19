@@ -25,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('createView');
         
     }
 
@@ -37,7 +37,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // $request->validate([
+        //     'name'=>'required',
+        //     'price' => 'required',
+        //     'gallery'=> 'required'
+        // ]);
+
+
+        $product = new Product;
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        
+        if($request->hasfile('gallery'))
+        {
+            $file = $request->file('gallery');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/products/', $filename);
+            $product->gallery = $filename;
+        } 
+        $product->save();
+        return redirect()->back()->with('status','Product Image Added Successfully');
     }
 
     /**
@@ -80,9 +101,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
-    {
-       $product->delete();
-        return redirect('/products');
-    }
+    // public function destroy(Product $product)
+    // {
+    //    $product->delete();
+    //     return redirect('/products');
+    // }
 }
