@@ -33,7 +33,6 @@ class RegisterController extends Controller
     {
         return ('/');
     }
-    
 
     /**
      * Create a new controller instance.

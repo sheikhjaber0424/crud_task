@@ -23,6 +23,8 @@ Route::resource('products',ProductController::class);
 
 Route::get('/',[ProductController::class,'index']);
 
+Auth::routes();
+
 // Route::get('/create',[ProductController::class,'create']);
 
 // Route::post('/products',[ProductController::class,'store']);
@@ -32,7 +34,7 @@ Route::get('/',[ProductController::class,'index']);
 // Route::put('/update/{id}',[ProductController::class,'update']);
 
 // Route::get('/delete/{id}',[ProductController::class,'destroy']);
-Auth::routes();
+
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

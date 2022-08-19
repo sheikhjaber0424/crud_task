@@ -8,15 +8,16 @@
 <div class="container custom-rent mb-5">
 
     @if(Auth::check())
-    <div class="text-center">
-        <a href="/products/create"><button class="btn btn-secondary ">Add Product</button></a>
-        {{-- <a href="products/create"><button class="btn btn-secondary ">Add Product</button></a> --}}
-       
-    </div>
+        <div class="text-center">
+            <a href="/products/create"><button class="btn btn-success ">Add Product</button></a>
+            {{-- <a href="products/create"><button class="btn btn-secondary ">Add Product</button></a> --}}
+        
+        </div>
     @endif
 
     @if (session('status'))
     <h6 class="alert alert-success mt-3">{{ session('status') }}</h6>
+    
 @endif
     <div class="rentals " style="display:flex;flex-flow:row;justify-content:start ;flex-wrap:wrap"> 
        
@@ -24,7 +25,7 @@
      @foreach ($products as $item) 
     
 
-    <div class="card shadow p-3 card text-center cityimg border-0 me-1" style="width: 20rem;display:inline-block;margin:40px 0px">
+    <div class="card shadow p-3 card text-center cardimg border-0 me-5" style="width: 17rem;display:inline-block;margin:40px 0px">
         <img class="card-img-top " src="{{ asset('uploads/products/'.$item['gallery']) }}" alt="Card image cap" height="250">   
       
         <div class="card-body">

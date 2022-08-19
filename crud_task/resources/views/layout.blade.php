@@ -26,5 +26,15 @@
     @yield('content')
 </body>
 
-<style></style>
+<style>
+
+    
+.cardimg:hover{
+  transform:scale(1.1) ;
+  z-index:3;
+  /* background-color: rgba(153, 11, 11, 0.1); */
+  transition: 0.4s;
+  
+}
+</style>
 </html>
